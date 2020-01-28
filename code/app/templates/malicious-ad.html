@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Malicious iFrame Clickjacking Example - Python</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="//bootswatch.com/4/flatly/bootstrap.min.css">
+
+		<style>
+h2 {
+	color: rgba(0, 0, 0, .75);
+}
+
+				.code {
+					padding: 15px;
+					-webkit-border-radius: 5px;
+					-moz-border-radius: 5px;
+					border-radius: 5px;
+					background-color: #ECF0F1;
+				}
+
+				.container {
+					width: 950px;
+				}
+		</style>
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="pb-2 mt-2 mb-2">
+				<h1>Malicious iFrame Clickjacking Example</h1>
+				<p>Open your JavaScript console (Ctrl+Shift+J) before clicking the buttons below to observe any error messages.</p>
+			</div>
+			<div class='code'>
+				<p id='p1'>Watch this space...</p>
+			</div>
+			<div class="pb-2 mt-2 mb-2">
+				<iframe sandbox='allow-scripts' srcdoc="<h2>Sandboxed iFrame</h2><button onclick='foo()'>Click Me</button><script>function foo() {parent.document.getElementById('p1').innerText=Date.now().toString();}</script>"></iframe>
+			</div>
+
+			<div class="pb-2 mt-4 mb-2">
+				<iframe srcdoc="<h2>Non-Sandboxed iFrame</h2><button onclick='foo()'>Click Me</button><script>function foo() {parent.document.getElementById('p1').innerText=Date.now().toString();}</script>"></iframe>
+			
+			</div>
+		</div>
+	</body>
+</html>

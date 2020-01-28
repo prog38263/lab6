@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="">
+		<script>
+			function goodButton() {
+				window.alert("Good Button");
+			}
+			function evilButton() {
+				window.alert("Bad Button");
+			}
+		</script>
+		<style>
+			body {
+				position: relative;
+			}
+			#goodButton {
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				z-index: 1;
+			}
+			#evilButton {
+				position: absolute;
+				left: 102px;
+				top: 102px;
+				z-index: 2;
+				background: transparent;
+				border: none;
+				outline: none;
+				display: block;
+				cursor: default;
+			}
+		</style>
+    </head>
+    <body>
+		<p>I'm an innocent website</p>
+		<input type="button" value="clickme" onclick="goodButton()" id="goodButton">
+		<input type="button" value="clickme" onclick="evilButton()" id="evilButton">
+	</body>
+</html>
